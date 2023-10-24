@@ -4,9 +4,9 @@
     {
         static void Main(string[] args)
         {
-            example1();
-            example2();
-            example3();
+            // example1();
+            // example2();
+            // example3();
             example4();
         }
 
@@ -20,12 +20,12 @@
             int result = operation(5, 10);
             Console.WriteLine("Сумма: " + result);
 
-            operation = new IntOperation(example1.Mul);   // Меняем ссылку на метод
+            operation = new IntOperation(example1.Multiply);   // Меняем ссылку на метод
             result = operation(5, 10);
             Console.WriteLine("Произведение: " + result);
 
-            operation = new IntOperation(example1.Min);   // Меняем ссылку на метод ещё раз
-            result = new IntOperation(example1.Div)(operation(operation(5, 10), 10), 5);
+            operation = new IntOperation(example1.Minus);   // Меняем ссылку на метод ещё раз
+            result = new IntOperation(example1.Divide)(operation(operation(5, 10), 10), 5);
             Console.WriteLine("Деление(Разность(5 и 10) - 10) на 5: " + result);
         }
 
@@ -45,11 +45,12 @@
 
             // Групповая адресация
             DelegateOperation = Print;
-            DelegateOperation += Print;
-            DelegateOperation += Print;
             DelegateOperation += SortASC;
+            DelegateOperation += Print;
             DelegateOperation += ArrayEvenify;
+            DelegateOperation += Print;
             DelegateOperation += SortDESC;
+            DelegateOperation += Print;
             DelegateOperation += ArrayOddify;
             DelegateOperation += Print;
 
@@ -61,6 +62,7 @@
             DelegateOperation -= SortDESC;
             //            DelegateOperation -= SortASC;
             DelegateOperation -= ArrayEvenify;
+            DelegateOperation -= Print;
             DelegateOperation -= Print;
             DelegateOperation -= ArrayOddify;
             DelegateOperation(ref myArr);
@@ -138,8 +140,8 @@
             // Создание делегата с передачей статического метода класса Student в качестве аргумента
             CompareDelegate StudentCompareOperation = new CompareDelegate(Student.isLeftMarkGreater);
             
-            // Вызов статического метода класса BubbleSortDummieClass, передача массива объектов и делегата
-            BubbleSortDummieClass.Sort(students, StudentCompareOperation);
+            // Вызов статического метода класса SortFunctions, передача массива объектов и делегата
+            SortFunctions.BuubleSort(students, StudentCompareOperation);
 
             Console.WriteLine("\nSorted by mark ASC:");
             for (int i = 0; i < students.Length; i++)
@@ -147,9 +149,16 @@
 
 
             // а теперь сортировка по имени
-            BubbleSortDummieClass.Sort(students, new CompareDelegate(Student.isLeftNameGreater));
+            SortFunctions.BuubleSort(students, new CompareDelegate(Student.isLeftNameGreater));
             
             Console.WriteLine("\nSorted by name ASC:");
+            for (int i = 0; i < students.Length; i++)
+                Console.WriteLine(students[i].ToString());
+
+            // а теперь сортировка по имени
+            SortFunctions.BuubleSort(students, new CompareDelegate(Student.isRightNameGreater));
+            
+            Console.WriteLine("\nSorted by name DESC:");
             for (int i = 0; i < students.Length; i++)
                 Console.WriteLine(students[i].ToString());
         }

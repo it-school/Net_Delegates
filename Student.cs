@@ -46,6 +46,19 @@
             Student leftStudent = (Student)left;
             Student rightStudent = (Student)right;
             return string.Compare(rightStudent.Name, leftStudent.Name, StringComparison.Ordinal) < 0;
+        }        
+        
+        /// <summary>
+        ///  Пользовательская функция сравнения студентов по имени, возвращающая целочисленное значение
+        /// </summary>
+        /// <param name="left">кого</param>
+        /// <param name="right">с кем</param>
+        /// <returns></returns>
+        public static bool isRightNameGreater(object left, object right)
+        {
+            Student leftStudent = (Student)left;
+            Student rightStudent = (Student)right;
+            return string.Compare(rightStudent.Name, leftStudent.Name, StringComparison.Ordinal) > 0;
         }
     }
 }

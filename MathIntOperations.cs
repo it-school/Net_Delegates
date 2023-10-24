@@ -9,17 +9,17 @@
             return x + y;
         }
 
-        internal int Min(int x, int y)
+        internal int Minus(int x, int y)
         {
             return x - y;
         }
 
-        internal int Mul(int x, int y)
+        internal int Multiply(int x, int y)
         {
             return x * y;
         }
 
-        internal int Div(int x, int y)
+        internal int Divide(int x, int y)
         {
             return x / y;
         }

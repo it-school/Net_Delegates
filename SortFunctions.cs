@@ -3,9 +3,9 @@
     // Объявление делегата, ссылающегося на функцию с двумя параметрами и результатом логического типа
     public delegate bool CompareDelegate(object lhs, object rhs);
 
-    internal class BubbleSortDummieClass
+    internal class SortFunctions
     {
-        public static void Sort(object[] sortArray, CompareDelegate greaterMethod)
+        public static void BuubleSort(object[] sortArray, CompareDelegate greaterMethod)
         {
             for (int i = 0; i < sortArray.Length - 1; i++)
             {
