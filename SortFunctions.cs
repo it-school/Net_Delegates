@@ -5,7 +5,7 @@
 
     internal class SortFunctions
     {
-        public static void BuubleSort(object[] sortArray, CompareDelegate greaterMethod)
+        public static void BubbleSort(object[] sortArray, CompareDelegate greaterMethod)
         {
             for (int i = 0; i < sortArray.Length - 1; i++)
             {

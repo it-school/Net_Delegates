@@ -121,16 +121,16 @@
             Random r = new Random();
             // Создание массива объектов класса Student.cs
             Student[] students = {
-                                    new Student(Utils.getRandomName(), 1, r.Next()%101),
-                                    new Student(Utils.getRandomName(), 2, r.Next()%101),
-                                    new Student(Utils.getRandomName(), 3, r.Next()%101),
-                                    new Student(Utils.getRandomName(), 4, r.Next()%101),
-                                    new Student(Utils.getRandomName(), 5, r.Next()%101),
-                                    new Student(Utils.getRandomName(), 6, r.Next()%101),
-                                    new Student(Utils.getRandomName(), 7, r.Next()%101),
-                                    new Student(Utils.getRandomName(), 8, r.Next()%101),
-                                    new Student(Utils.getRandomName(), 9, r.Next()%101),
-                                    new Student(Utils.getRandomName(), 10, r.Next()%101)
+                                    new Student(Utils.getRandomName(), 1, r.Next()%11),
+                                    new Student(Utils.getRandomName(), 2, r.Next()%11),
+                                    new Student(Utils.getRandomName(), 3, r.Next()%11),
+                                    new Student(Utils.getRandomName(), 4, r.Next()%11),
+                                    new Student(Utils.getRandomName(), 5, r.Next()%11),
+                                    new Student(Utils.getRandomName(), 6, r.Next()%11),
+                                    new Student(Utils.getRandomName(), 7, r.Next()%11),
+                                    new Student(Utils.getRandomName(), 8, r.Next()%11),
+                                    new Student(Utils.getRandomName(), 9, r.Next()%11),
+                                    new Student(Utils.getRandomName(), 10, r.Next()%11)
                                 };
             Console.WriteLine("\nInitial data:");
             for (int i = 0; i < students.Length; i++)
@@ -138,10 +138,10 @@
 
 
             // Создание делегата с передачей статического метода класса Student в качестве аргумента
-            CompareDelegate StudentCompareOperation = new CompareDelegate(Student.isLeftMarkGreater);
+            CompareDelegate StudentCompareOperation = new CompareDelegate(Student.IsLeftMarkGreater);
             
             // Вызов статического метода класса SortFunctions, передача массива объектов и делегата
-            SortFunctions.BuubleSort(students, StudentCompareOperation);
+            SortFunctions.BubbleSort(students, StudentCompareOperation);
 
             Console.WriteLine("\nSorted by mark ASC:");
             for (int i = 0; i < students.Length; i++)
@@ -149,18 +149,25 @@
 
 
             // а теперь сортировка по имени
-            SortFunctions.BuubleSort(students, new CompareDelegate(Student.isLeftNameGreater));
+            SortFunctions.BubbleSort(students, new CompareDelegate(Student.IsLeftNameGreater));
             
             Console.WriteLine("\nSorted by name ASC:");
             for (int i = 0; i < students.Length; i++)
                 Console.WriteLine(students[i].ToString());
 
             // а теперь сортировка по имени
-            SortFunctions.BuubleSort(students, new CompareDelegate(Student.isRightNameGreater));
+            SortFunctions.BubbleSort(students, new CompareDelegate(Student.IsRightNameGreater));
             
             Console.WriteLine("\nSorted by name DESC:");
             for (int i = 0; i < students.Length; i++)
                 Console.WriteLine(students[i].ToString());
+
+            // а теперь сортировка по имени и по оценке
+            SortFunctions.BubbleSort(students, new CompareDelegate(Student.IsLeftNameAndMarkGreater));
+            Console.WriteLine("\nSorted by name and by mark:");
+            for (int i = 0; i < students.Length; i++)
+                Console.WriteLine(students[i].ToString());
+
         }
     }
 }
